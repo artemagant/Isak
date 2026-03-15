@@ -1,18 +1,61 @@
 [gd_scene format=3 uid="uid://bj8j3s3h4wm23"]
 
 [ext_resource type="Script" uid="uid://ccrq1dkfxgfvu" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
+[ext_resource type="Texture2D" uid="uid://dv5feg2412s67" path="res://Sprites/Player.png" id="2_a3d8c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpcdj"]
+atlas = ExtResource("2_a3d8c")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtuoh"]
+atlas = ExtResource("2_a3d8c")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_htcer"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpcdj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtuoh")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 1.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Move_Down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Move_Left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Move_Right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Move_Up",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tugb3"]
-radius = 15.0
-height = 56.0
+radius = 4.0
+height = 12.0
 
 [node name="Player" type="CharacterBody2D" unique_id=762446673]
 script = ExtResource("1_uvnfx")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=739293391]
-offset_right = 40.0
-offset_bottom = 66.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2069552920]
+sprite_frames = SubResource("SpriteFrames_htcer")
+animation = &"Move_Left"
+autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=349464729]
-position = Vector2(21, 35)
 shape = SubResource("CapsuleShape2D_tugb3")
