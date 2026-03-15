@@ -1,12 +1,44 @@
 [gd_scene format=3 uid="uid://d0nh2uvnd72li"]
 
 [ext_resource type="PackedScene" uid="uid://bj8j3s3h4wm23" path="res://Scenes/Player/player.tscn" id="1_wlkqr"]
+[ext_resource type="PackedScene" uid="uid://c0ggne1ghrosf" path="res://Scenes/Mobile_Buttons/mobile_movment.tscn" id="2_8go27"]
 
 [node name="Game" type="Node2D" unique_id=1379535319]
+position = Vector2(720, 384)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=103767446]
+offset_left = -558.0
+offset_top = 259.0
+offset_right = 551.0
+offset_bottom = 1921.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=2105945660]
+offset_left = -654.0
+offset_top = -2642.0
+offset_right = 658.0
+offset_bottom = -263.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1790733907]
+offset_left = 483.0
+offset_top = -1790.0
+offset_right = 2069.0
+offset_bottom = 1565.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=2054555392]
+offset_left = -2555.0
+offset_top = -2516.0
+offset_right = -476.0
+offset_bottom = 1190.0
+color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." unique_id=762446673 instance=ExtResource("1_wlkqr")]
-position = Vector2(226, 177)
+position = Vector2(66, 24)
+scale = Vector2(4.5, 4.5)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=493993964]
-anchor_mode = 0
-zoom = Vector2(5, 5)
+zoom = Vector2(1.5, 1.5)
+
+[node name="Mobile_Movment" parent="." unique_id=1888215506 instance=ExtResource("2_8go27")]

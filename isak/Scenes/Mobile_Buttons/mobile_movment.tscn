@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c0ggne1ghrosf"]
+
+[ext_resource type="Texture2D" uid="uid://ccajhigp6ogyx" path="res://icon.svg" id="1_e5ny2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6flo"]
+size = Vector2(128, 128)
+
+[node name="Mobile_Movment" type="CanvasLayer" unique_id=1888215506]
+
+[node name="Up" type="TouchScreenButton" parent="." unique_id=275704564]
+position = Vector2(100, 392)
+scale = Vector2(0.6, 0.587)
+texture_normal = ExtResource("1_e5ny2")
+shape = SubResource("RectangleShape2D_x6flo")
+passby_press = true
+action = "up"
+visibility_mode = 1
+
+[node name="Down" type="TouchScreenButton" parent="." unique_id=769356421]
+position = Vector2(96, 531)
+scale = Vector2(0.6, 0.587)
+texture_normal = ExtResource("1_e5ny2")
+shape = SubResource("RectangleShape2D_x6flo")
+passby_press = true
+action = "Down"
+visibility_mode = 1
+
+[node name="Right" type="TouchScreenButton" parent="." unique_id=356447400]
+position = Vector2(187.00002, 454.00003)
+scale = Vector2(0.6, 0.587)
+texture_normal = ExtResource("1_e5ny2")
+shape = SubResource("RectangleShape2D_x6flo")
+passby_press = true
+action = "Right"
+visibility_mode = 1
+
+[node name="Left" type="TouchScreenButton" parent="." unique_id=936538248]
+position = Vector2(4, 462)
+scale = Vector2(0.6, 0.587)
+texture_normal = ExtResource("1_e5ny2")
+shape = SubResource("RectangleShape2D_x6flo")
+passby_press = true
+action = "Left"
+visibility_mode = 1
