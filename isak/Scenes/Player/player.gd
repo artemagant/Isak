@@ -5,7 +5,7 @@ var shoot_direction: = Vector2(0, 0)
 var shoot_button: = Vector4.ZERO
 var speed: = 2.5
 var speed_mult: = 100
-var cooldown: = 1.0
+var cooldown: = 0.5
 
 var can_shoot = true
 
@@ -85,12 +85,18 @@ func shoot():
 		while shoot_button[rand_dir] == 0:
 			rand_dir = randi_range(0, 3)
 		match rand_dir:
-			0: head.play("Down")
-			1: head.play("Up")
-			2: head.play("Left")
-			3: head.play("Right")
+			0: 
+				head.play("Down")
+			1: 
+				head.play("Up")
+			2: 
+				head.play("Left")
+			3: 
+				head.play("Right")
 		bullet_cooldown.start()
 
 
 func _on_bullet_cooldown_timeout() -> void:
 	can_shoot = true
+	bullet_cooldown.wait_time = cooldown
+	shoot()
