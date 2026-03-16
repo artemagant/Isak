@@ -5,14 +5,19 @@ var shoot_direction: = Vector2(0, 0)
 var shoot_button: = Vector4.ZERO
 var speed: = 2.5
 var speed_mult: = 100
-var cooldown: = 0.5
+var cooldown: = 1.0
 
 var can_shoot = true
+
+var damage: = 1
+var bullet_speed: = 3
 
 @onready var animation := $Bottom
 @onready var head := $Bullet_Spawner/Head
 @onready var bullet_cooldown: = $Bullet_Cooldown
-
+@onready var game: = $".".get_parent()
+@onready var bullets: = game.get_child(0)
+@onready var bullet_spawner: = $Bullet_Spawner
 func _input(event: InputEvent) -> void:
 	#region Move
 	if event.is_action_pressed("Left"):
@@ -70,8 +75,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("Shoot_Right"):
 		shoot_button.w = 0
 	
-	if shoot_button == Vector4.ZERO:
-		head.play("Down")
+	#if shoot_button == Vector4.ZERO:
+	#	head.play("Down")
 	shoot()
 	#endregion
 func _physics_process(delta: float) -> void:
@@ -84,15 +89,25 @@ func shoot():
 		var rand_dir = randi_range(0, 3)
 		while shoot_button[rand_dir] == 0:
 			rand_dir = randi_range(0, 3)
+		var _bullet = load("res://Scenes/Bullets/bullet.tscn").instantiate()
+		_bullet.damage = damage
+		_bullet.speed = bullet_speed
+		_bullet.starting_position = bullet_spawner.global_position
+		_bullet.type = 1
 		match rand_dir:
 			0: 
 				head.play("Down")
+				_bullet.direction = Vector2(0, 1)
 			1: 
 				head.play("Up")
+				_bullet.direction = Vector2(0, -1)
 			2: 
 				head.play("Left")
+				_bullet.direction = Vector2(-1, 0)
 			3: 
 				head.play("Right")
+				_bullet.direction = Vector2(1, 0)
+		game.emit_signal("shot", _bullet)
 		bullet_cooldown.start()
 
 

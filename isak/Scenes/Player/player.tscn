@@ -1,62 +1,64 @@
 [gd_scene format=3 uid="uid://bj8j3s3h4wm23"]
 
 [ext_resource type="Script" uid="uid://ccrq1dkfxgfvu" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
-[ext_resource type="Texture2D" uid="uid://bbiuvcn4qaiey" path="res://Sprites/Player_Atlas.png" id="2_a3d8c"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uvnfx"]
+load_path = "res://.godot/imported/Player_Atlas.png-bdea58edc3a6972c5ebac4ba85c846da.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3d8c"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpcdj"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mtuoh"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_htcer"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dd0ac"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0u5uq"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jlvik"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gk6dx"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhyir"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(128, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_74mp2"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(144, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oikmp"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(160, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_06tpx"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(176, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7g0yx"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dey5f"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_htcer"]
@@ -119,19 +121,19 @@ radius = 5.0
 height = 13.333334
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r5xpd"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ks1b7"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hnuln"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(64, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aqm4k"]
-atlas = ExtResource("2_a3d8c")
+atlas = SubResource("CompressedTexture2D_uvnfx")
 region = Rect2(80, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rcvs5"]
@@ -177,8 +179,6 @@ scale = Vector2(6, 6)
 collision_mask = 252
 script = ExtResource("1_uvnfx")
 
-[node name="Bullets" type="Node2D" parent="." unique_id=238021790]
-
 [node name="Bottom" type="AnimatedSprite2D" parent="." unique_id=2069552920]
 sprite_frames = SubResource("SpriteFrames_htcer")
 animation = &"Move_Run"
@@ -189,9 +189,11 @@ position = Vector2(0, -2.6666667)
 shape = SubResource("CapsuleShape2D_tugb3")
 
 [node name="Bullet_Spawner" type="Area2D" parent="." unique_id=579951590]
+position = Vector2(0, -4)
 
 [node name="Head" type="AnimatedSprite2D" parent="Bullet_Spawner" unique_id=272960958]
-position = Vector2(0, -8)
+z_index = 2
+position = Vector2(0, -3.9999995)
 sprite_frames = SubResource("SpriteFrames_rcvs5")
 animation = &"Up"
 autoplay = "Down"
@@ -201,7 +203,7 @@ position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_a3d8c")
 
 [node name="Bullet_Cooldown" type="Timer" parent="." unique_id=834465862]
-wait_time = 0.5
+wait_time = 1.9
 one_shot = true
 
 [connection signal="timeout" from="Bullet_Cooldown" to="." method="_on_bullet_cooldown_timeout"]

@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://d0l2s1vmoicsm"]
+
+[ext_resource type="Script" uid="uid://c3qlfrp545cxh" path="res://Scenes/Bullets/bullet.gd" id="1_fxu8v"]
+[ext_resource type="Texture2D" uid="uid://df7jowbibb488" path="res://Sprites/Player_Atlas.png" id="2_857sy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgu28"]
+atlas = ExtResource("2_857sy")
+region = Rect2(0, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sspet"]
+atlas = ExtResource("2_857sy")
+region = Rect2(8, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iicub"]
+atlas = ExtResource("2_857sy")
+region = Rect2(8, 40, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nutmk"]
+atlas = ExtResource("2_857sy")
+region = Rect2(0, 40, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_thrw1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgu28")
+}],
+"loop": true,
+"name": &"Big",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sspet")
+}],
+"loop": true,
+"name": &"Medium",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iicub")
+}],
+"loop": true,
+"name": &"Small",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nutmk")
+}],
+"loop": true,
+"name": &"Well",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qngn8"]
+radius = 1.8
+
+[node name="Bullet" type="Area2D" unique_id=117394980]
+z_index = 1
+scale = Vector2(4.5, 4.5)
+script = ExtResource("1_fxu8v")
+collision_radiuses = [1.8, 2.9, 3.8, 4.47]
+speed = 1.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1582453257]
+sprite_frames = SubResource("SpriteFrames_thrw1")
+animation = &"Small"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1849620943]
+shape = SubResource("CircleShape2D_qngn8")
