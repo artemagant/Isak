@@ -81,6 +81,14 @@ func _physics_process(delta: float) -> void:
 func shoot():
 	if shoot_button != Vector4.ZERO and can_shoot:
 		can_shoot = false
+		var rand_dir = randi_range(0, 3)
+		while shoot_button[rand_dir] == 0:
+			rand_dir = randi_range(0, 3)
+		match rand_dir:
+			0: head.play("Down")
+			1: head.play("Up")
+			2: head.play("Left")
+			3: head.play("Right")
 		bullet_cooldown.start()
 
 

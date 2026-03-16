@@ -201,6 +201,7 @@ position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_a3d8c")
 
 [node name="Bullet_Cooldown" type="Timer" parent="." unique_id=834465862]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="timeout" from="Bullet_Cooldown" to="." method="_on_bullet_cooldown_timeout"]
