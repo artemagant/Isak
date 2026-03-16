@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bj8j3s3h4wm23"]
 
 [ext_resource type="Script" uid="uid://ccrq1dkfxgfvu" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
-[ext_resource type="Texture2D" uid="uid://c1gkf3nc48uoj" path="res://Sprites/Player_Atlas.png" id="2_a3d8c"]
+[ext_resource type="Texture2D" uid="uid://bbiuvcn4qaiey" path="res://Sprites/Player_Atlas.png" id="2_a3d8c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3d8c"]
 atlas = ExtResource("2_a3d8c")
@@ -116,12 +116,68 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tugb3"]
 radius = 5.0
-height = 10.0
+height = 13.333334
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5xpd"]
+atlas = ExtResource("2_a3d8c")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks1b7"]
+atlas = ExtResource("2_a3d8c")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnuln"]
+atlas = ExtResource("2_a3d8c")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqm4k"]
+atlas = ExtResource("2_a3d8c")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rcvs5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5xpd")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks1b7")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnuln")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqm4k")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 0.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a3d8c"]
+radius = 2.6666667
 
 [node name="Player" type="CharacterBody2D" unique_id=762446673]
 scale = Vector2(6, 6)
 collision_mask = 252
 script = ExtResource("1_uvnfx")
+
+[node name="Bullets" type="Node2D" parent="." unique_id=238021790]
 
 [node name="Bottom" type="AnimatedSprite2D" parent="." unique_id=2069552920]
 sprite_frames = SubResource("SpriteFrames_htcer")
@@ -129,4 +185,22 @@ animation = &"Move_Run"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=349464729]
+position = Vector2(0, -2.6666667)
 shape = SubResource("CapsuleShape2D_tugb3")
+
+[node name="Bullet_Spawner" type="Area2D" parent="." unique_id=579951590]
+
+[node name="Head" type="AnimatedSprite2D" parent="Bullet_Spawner" unique_id=272960958]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_rcvs5")
+animation = &"Up"
+autoplay = "Down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet_Spawner" unique_id=1815688269]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_a3d8c")
+
+[node name="Bullet_Cooldown" type="Timer" parent="." unique_id=834465862]
+one_shot = true
+
+[connection signal="timeout" from="Bullet_Cooldown" to="." method="_on_bullet_cooldown_timeout"]
