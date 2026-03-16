@@ -42,3 +42,39 @@ shape = SubResource("RectangleShape2D_x6flo")
 passby_press = true
 action = "Left"
 visibility_mode = 1
+
+[node name="Up_Shoot" type="TouchScreenButton" parent="." unique_id=1242578566]
+position = Vector2(1133, 392)
+scale = Vector2(0.6, 0.587)
+texture_normal = ExtResource("1_e5ny2")
+shape = SubResource("RectangleShape2D_x6flo")
+passby_press = true
+action = "Shoot_Up"
+visibility_mode = 1
+
+[node name="Down_Shoot" type="TouchScreenButton" parent="." unique_id=2140893092]
+position = Vector2(1129, 531)
+scale = Vector2(0.6, 0.587)
+texture_normal = ExtResource("1_e5ny2")
+shape = SubResource("RectangleShape2D_x6flo")
+passby_press = true
+action = "Shoot_Down"
+visibility_mode = 1
+
+[node name="Right_Shoot" type="TouchScreenButton" parent="." unique_id=1741137531]
+position = Vector2(1220, 454.00003)
+scale = Vector2(0.6, 0.587)
+texture_normal = ExtResource("1_e5ny2")
+shape = SubResource("RectangleShape2D_x6flo")
+passby_press = true
+action = "Shoot_Right"
+visibility_mode = 1
+
+[node name="Left_Shoot" type="TouchScreenButton" parent="." unique_id=260502840]
+position = Vector2(1037, 462)
+scale = Vector2(0.6, 0.587)
+texture_normal = ExtResource("1_e5ny2")
+shape = SubResource("RectangleShape2D_x6flo")
+passby_press = true
+action = "Shoot_Left"
+visibility_mode = 1
