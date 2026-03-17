@@ -20,9 +20,13 @@ var bullets_cooldown: = 1.0
 @onready var game: = $".".get_parent()
 @onready var bullets: = game.get_child(0)
 @onready var bullet_spawner: = $Bullet_Spawner
+func _enter_tree() -> void:
+	set_multiplayer_authority(name.to_int())
 func _ready() -> void:
 	bullet_cooldown.wait_time = bullets_cooldown
 func _input(event: InputEvent) -> void:
+	if not is_multiplayer_authority():
+		return
 	#region Move
 	if event.is_action_pressed("Left"):
 		direction.x += -1
@@ -93,10 +97,13 @@ func _input(event: InputEvent) -> void:
 	shoot()
 	#endregion
 func _physics_process(delta: float) -> void:
-	position += direction.normalized() * speed * speed_mult * delta
+	if is_multiplayer_authority():
+		position += direction.normalized() * speed * speed_mult * delta
 	move_and_slide()
 
 func shoot():
+	if not is_multiplayer_authority():
+		return
 	if shoot_button != Vector4.ZERO and can_shoot:
 		can_shoot = false
 		var rand_dir = randi_range(0, 3)
@@ -126,7 +133,6 @@ func shoot():
 				_bullet.direction = Vector2(1, 0)
 		game.emit_signal("shot", _bullet)
 		bullet_cooldown.start()
-
 
 func _on_bullet_cooldown_timeout() -> void:
 	can_shoot = true

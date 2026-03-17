@@ -174,8 +174,19 @@ height = 13.333334
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3d8c"]
 radius = 2.6666667
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_uvnfx"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Head:animation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Bottom:animation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [node name="Player" type="CharacterBody2D" unique_id=762446673]
-scale = Vector2(6, 6)
+scale = Vector2(4, 4)
 collision_mask = 252
 script = ExtResource("1_uvnfx")
 
@@ -205,5 +216,8 @@ shape = SubResource("CircleShape2D_a3d8c")
 [node name="Bullet_Cooldown" type="Timer" parent="." unique_id=834465862]
 wait_time = 1.9
 one_shot = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=463176437]
+replication_config = SubResource("SceneReplicationConfig_uvnfx")
 
 [connection signal="timeout" from="Bullet_Cooldown" to="." method="_on_bullet_cooldown_timeout"]

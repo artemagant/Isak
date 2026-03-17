@@ -57,12 +57,19 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_qngn8"]
 radius = 1.8
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qngn8"]
+properties/0/path = NodePath("AnimatedSprite2D:animation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
 [node name="Bullet" type="Area2D" unique_id=117394980]
 z_index = 2
 scale = Vector2(4.5, 4.5)
 script = ExtResource("1_fxu8v")
+damage = null
 collision_radiuses = [1.8, 2.9, 3.8, 4.47]
 speed = 1.0
+can_piarce = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1582453257]
 sprite_frames = SubResource("SpriteFrames_thrw1")
@@ -70,3 +77,6 @@ animation = &"Small"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1849620943]
 shape = SubResource("CircleShape2D_qngn8")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=812172016]
+replication_config = SubResource("SceneReplicationConfig_qngn8")
