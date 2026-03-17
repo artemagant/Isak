@@ -12,7 +12,7 @@ enum Levels {
 @export var collision_radiuses: = [0.00, 0.00, 0.00, 0.00]
 @export var speed: = 0.0
 @export var can_piarce: = false
-var type: = Levels.Big
+var type: Levels
 @onready var collision: = $CollisionShape2D
 @onready var animations: = $AnimatedSprite2D
 var direction: = Vector2.ZERO

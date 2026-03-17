@@ -58,7 +58,7 @@ animations = [{
 radius = 1.8
 
 [node name="Bullet" type="Area2D" unique_id=117394980]
-z_index = 1
+z_index = 2
 scale = Vector2(4.5, 4.5)
 script = ExtResource("1_fxu8v")
 collision_radiuses = [1.8, 2.9, 3.8, 4.47]
