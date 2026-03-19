@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cqow47bch5ocs"]
+
+[ext_resource type="Script" uid="uid://bs2qeucwtife5" path="res://main.gd" id="1_ig7tw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7dm0k"]
+font_size = 100
+
+[node name="Main" type="Node2D" unique_id=594220152]
+script = ExtResource("1_ig7tw")
+
+[node name="Label" type="Label" parent="." unique_id=3220532]
+offset_left = 518.0
+offset_top = 163.0
+offset_right = 584.0
+offset_bottom = 300.0
+text = "А"
+label_settings = SubResource("LabelSettings_7dm0k")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1015653377]
+points = PackedVector2Array(482, 322, 627, 322)
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=1062638622]
+offset_left = 440.0
+offset_top = 387.0
+offset_right = 658.0
+offset_bottom = 513.0
+theme_override_font_sizes/font_size = 100
+placeholder_text = ".-.-"
+indent_wrapped_lines = true
+
+[connection signal="text_changed" from="TextEdit" to="." method="_on_text_edit_text_changed"]

@@ -103,7 +103,7 @@ func _physics_process(delta: float) -> void:
 
 func shoot():
 	if not is_multiplayer_authority():
-		return
+		returnaw
 	if shoot_button != Vector4.ZERO and can_shoot:
 		can_shoot = false
 		var rand_dir = randi_range(0, 3)
